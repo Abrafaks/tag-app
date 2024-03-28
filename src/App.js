@@ -1,32 +1,37 @@
-// import { useEffect } from 'react';
-// import { useAxiosFetch } from './hooks/useAxiosFetch';
-// import { useStoreActions } from 'easy-peasy';
+import { useEffect } from 'react';
+import { useAxiosFetch } from './hooks/useAxiosFetch';
+import { useStoreActions } from 'easy-peasy';
 import Header from './components/Header';
-import Searchbar from './components/Searchbar';
 import TagList from './components/TagList';
+import NavBar from './components/NavBar';
 
 function App() {
-  // const setTags = useStoreActions(actions => actions.setTags);
-  // const setMaxPage = useStoreActions(actions => actions.setMaxPage);
+  const setTags = useStoreActions(actions => actions.setTags);
+  const setMaxPage = useStoreActions(actions => actions.setMaxPage);
 
-  // const { data } = useAxiosFetch(
-  //   'https://api.stackexchange.com/2.3/tags?&order=desc&sort=popular&site=stackoverflow'
-  // );
-  // const totalResponse = useAxiosFetch(
-  //   'https://api.stackexchange.com/2.3/tags?&order=desc&sort=popular&site=stackoverflow&filter=total'
-  // );
-  // const defaultPageSize = 30;
-  // const maxPage = Math.ceil(totalResponse.data.total / defaultPageSize);
+  const { data, fetchError } = useAxiosFetch(
+    'https://api.stackexchange.com/2.3/tags?&order=desc&sort=popular&site=stackoverflow'
+  );
+  const { data: totalData, fetchError: totalFetchError } = useAxiosFetch(
+    'https://api.stackexchange.com/2.3/tags?&order=desc&sort=popular&site=stackoverflow&filter=total'
+  );
+  const defaultPageSize = 30;
+  const maxPage = Math.ceil(totalData.total / defaultPageSize);
 
-  // useEffect(() => {
-  //   setTags(data.items);
-  //   setMaxPage(maxPage);
-  // }, [data, setTags, totalResponse, setMaxPage]);
+  useEffect(() => {
+    if (!fetchError) {
+      setTags(data.items);
+    }
+
+    if (!totalFetchError) {
+      setMaxPage(maxPage);
+    }
+  }, [data, setTags, totalData, setMaxPage]);
 
   return (
     <div className="App">
       <Header />
-      <Searchbar />
+      <NavBar />
       <TagList />
     </div>
   );

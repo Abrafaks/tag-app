@@ -3,7 +3,7 @@ import { useStoreActions, useStoreState } from 'easy-peasy';
 import debounce from 'lodash.debounce';
 import React, { useRef } from 'react';
 
-const Searchbar = () => {
+const Search = () => {
   const search = useStoreState(state => state.search);
   const setSearch = useStoreActions(actions => actions.setSearch);
   const getTags = useStoreActions(actions => actions.getTags);
@@ -22,16 +22,15 @@ const Searchbar = () => {
   };
 
   return (
-    <div>
-      <TextField
-        id="outlined-basic"
-        label="search tags"
-        variant="outlined"
-        value={search}
-        onChange={handleInputChange}
-      />
-    </div>
+    <TextField
+      id="outlined-basic"
+      label="search tags"
+      variant="outlined"
+      value={search}
+      onChange={handleInputChange}
+      fullWidth
+    />
   );
 };
 
-export default Searchbar;
+export default Search;

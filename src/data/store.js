@@ -11,15 +11,15 @@ export default createStore({
     console.log(payload);
     state.search = payload;
   }),
-  page: '1',
+  page: 1,
   setPage: action((state, payload) => {
     state.page = payload;
   }),
-  maxPage: '25',
+  maxPage: 25,
   setMaxPage: action((state, payload) => {
     state.maxPage = payload;
   }),
-  pageSize: '1',
+  pageSize: 30,
   setPageSize: action((state, payload) => {
     state.pageSize = payload;
   }),

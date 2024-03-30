@@ -7,14 +7,16 @@ import { v4 } from 'uuid';
 
 const TagItem = ({ name, count }) => {
   return (
-    <Grid key={v4()} item xs={6} sm={3} md={2} lg={2} style={{ display: 'flex' }}>
+    <Grid key={v4()} xs={6} sm={4} md={3} lg={2} style={{ display: 'flex' }}>
       <Paper
         elevation={3}
         style={{
           padding: 8,
           display: 'flex',
           alignItems: 'center',
-          flex: 1
+          flex: 1,
+          maxWidth: '100%',
+          overflow: 'hidden'
         }}
       >
         <TagIcon color="primary" />

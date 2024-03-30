@@ -16,7 +16,8 @@ const TagItem = ({ name, count }) => {
           alignItems: 'center',
           flex: 1,
           maxWidth: '100%',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          minHeight: '80px'
         }}
       >
         <TagIcon color="primary" />

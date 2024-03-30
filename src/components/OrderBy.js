@@ -1,21 +1,8 @@
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { useStoreActions, useStoreState } from 'easy-peasy';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 
-const OrderBy = () => {
-  const isLoading = useStoreState(state => state.isLoading);
-  const tags = useStoreState(state => state.tags);
-  const order = useStoreState(state => state.order);
-  const setOrder = useStoreActions(actions => actions.setOrder);
-  const getTags = useStoreActions(actions => actions.getTags);
-
-  const handleOrder = (event, newOrder) => {
-    if (newOrder) {
-      setOrder(newOrder);
-      getTags();
-    }
-  };
-
+const OrderBy = ({ isLoading, tags, order, handleOrder }) => {
   return (
     <ToggleButtonGroup value={order} exclusive onChange={handleOrder} fullWidth>
       <ToggleButton value="asc" disabled={isLoading || tags.length === 0}>
@@ -26,6 +13,13 @@ const OrderBy = () => {
       </ToggleButton>
     </ToggleButtonGroup>
   );
+};
+
+OrderBy.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  tags: PropTypes.array.isRequired,
+  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+  handleOrder: PropTypes.func.isRequired
 };
 
 export default OrderBy;

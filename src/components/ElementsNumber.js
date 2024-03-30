@@ -1,19 +1,8 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { useStoreActions, useStoreState } from 'easy-peasy';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-const ElementsNumber = () => {
-  const isLoading = useStoreState(state => state.isLoading);
-  const tags = useStoreState(state => state.tags);
-  const pageSize = useStoreState(state => state.pageSize);
-  const setPageSize = useStoreActions(actions => actions.setPageSize);
-  const getTags = useStoreActions(actions => actions.getTags);
-
-  const handleChange = event => {
-    setPageSize(event.target.value);
-    getTags();
-  };
-
+const ElementsNumber = ({ isLoading, tags, pageSize, handleElementChange }) => {
   return (
     <FormControl fullWidth>
       <InputLabel id="select-label">Size</InputLabel>
@@ -22,7 +11,7 @@ const ElementsNumber = () => {
         id="simple-select"
         value={pageSize}
         label="Size"
-        onChange={handleChange}
+        onChange={handleElementChange}
         disabled={isLoading || tags.length === 0}
       >
         <MenuItem value={15}>15</MenuItem>
@@ -32,6 +21,13 @@ const ElementsNumber = () => {
       </Select>
     </FormControl>
   );
+};
+
+ElementsNumber.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  tags: PropTypes.array.isRequired,
+  pageSize: PropTypes.oneOf([15, 30, 60, 90]).isRequired,
+  handleElementChange: PropTypes.func.isRequired
 };
 
 export default ElementsNumber;

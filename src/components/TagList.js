@@ -1,15 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Grid from '@mui/material/Unstable_Grid2';
-import { useStoreState } from 'easy-peasy';
-import TagItem from './TagItem';
 import { v4 } from 'uuid';
 import { Stack, CircularProgress, Typography } from '@mui/material';
+import TagItem from './TagItem';
 
-const TagList = () => {
-  const isLoading = useStoreState(state => state.isLoading);
-  const isError = useStoreState(state => state.isError);
-  const tags = useStoreState(state => state.tags);
-
+const TagList = ({ isLoading, isError, tags }) => {
   return (
     <>
       {isLoading && (
@@ -39,6 +35,12 @@ const TagList = () => {
       )}
     </>
   );
+};
+
+TagList.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  tags: PropTypes.array.isRequired
 };
 
 export default TagList;

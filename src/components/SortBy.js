@@ -1,21 +1,8 @@
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { useStoreActions, useStoreState } from 'easy-peasy';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 
-const SortBy = () => {
-  const isLoading = useStoreState(state => state.isLoading);
-  const tags = useStoreState(state => state.tags);
-  const sort = useStoreState(state => state.sort);
-  const setSort = useStoreActions(actions => actions.setSort);
-  const getTags = useStoreActions(actions => actions.getTags);
-
-  const handleSort = (event, newSort) => {
-    if (newSort) {
-      setSort(newSort);
-      getTags();
-    }
-  };
-
+const SortBy = ({ isLoading, tags, sort, handleSort }) => {
   return (
     <ToggleButtonGroup
       value={sort}
@@ -29,6 +16,13 @@ const SortBy = () => {
       <ToggleButton value="activity">Activity</ToggleButton>
     </ToggleButtonGroup>
   );
+};
+
+SortBy.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  tags: PropTypes.array.isRequired,
+  sort: PropTypes.oneOf(['popular', 'name', 'activity']).isRequired,
+  handleSort: PropTypes.func.isRequired
 };
 
 export default SortBy;

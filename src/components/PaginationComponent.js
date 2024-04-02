@@ -11,7 +11,7 @@ const PaginationComponent = ({ isLoading, tags, page, maxPage, handlePageChange 
         page={page}
         onChange={handlePageChange}
         disabled={isLoading || tags.length === 0}
-        style={{ margin: '5% 0' }}
+        style={{ margin: '5% 0', paddingBottom: '5%' }}
       />
     </>
   );

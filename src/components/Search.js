@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextField } from '@mui/material';
 
-const Search = ({ isLoading, search, handleInputChange }) => {
+const Search = ({ search, handleInputChange }) => {
   return (
     <TextField
       id="outlined-basic"
@@ -11,13 +11,11 @@ const Search = ({ isLoading, search, handleInputChange }) => {
       value={search}
       onChange={handleInputChange}
       fullWidth
-      disabled={isLoading}
     />
   );
 };
 
 Search.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
   search: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired
 };

@@ -10,8 +10,7 @@ export default {
   },
   args: {
     handleInputChange: fn(),
-    search: '',
-    isLoading: false
+    search: ''
   }
 };
 
@@ -20,11 +19,5 @@ export const Default = {};
 export const Filled = {
   args: {
     search: 'React'
-  }
-};
-
-export const Disabled = {
-  args: {
-    isLoading: true
   }
 };

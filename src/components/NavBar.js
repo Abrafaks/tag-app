@@ -21,7 +21,7 @@ const NavBar = ({
   return (
     <Grid container spacing={1}>
       <Grid xs={12} sm={9} md={3} display="flex" alignItems="center">
-        <Search isLoading={isLoading} search={search} handleInputChange={handleInputChange} />
+        <Search search={search} handleInputChange={handleInputChange} />
       </Grid>
       <Grid xs={12} sm={3} md={2} display="flex" alignItems="center">
         <ElementsNumber

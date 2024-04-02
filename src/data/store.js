@@ -36,7 +36,7 @@ export default createStore({
   setIsLoading: action((state, payload) => {
     state.isLoading = payload;
   }),
-  error: false,
+  isError: false,
   setIsError: action((state, payload) => {
     state.error = payload;
   }),

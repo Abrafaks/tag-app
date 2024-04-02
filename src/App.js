@@ -52,7 +52,7 @@ function App() {
   const debouncedGetTags = useRef(
     debounce(() => {
       getTags();
-    }, 750)
+    }, 1000)
   ).current;
 
   const handleInputChange = event => {

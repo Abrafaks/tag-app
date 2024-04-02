@@ -50,8 +50,8 @@ function App() {
   };
 
   const debouncedGetTags = useRef(
-    debounce(value => {
-      getTags(value);
+    debounce(() => {
+      getTags();
     }, 750)
   ).current;
 
@@ -59,7 +59,7 @@ function App() {
     const value = event.target.value;
     setSearch(value);
     setPage(1);
-    debouncedGetTags(value);
+    debouncedGetTags();
   };
 
   const handlePageChange = (event, value) => {

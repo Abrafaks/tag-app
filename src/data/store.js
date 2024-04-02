@@ -47,7 +47,6 @@ export default createStore({
       actions.setIsError(false);
       actions.setIsLoading(true);
       const response = await api.get(url);
-      console.log(JSON.stringify(response));
       const totalResponse = await api.get(url + '&filter=total');
       actions.setIsLoading(false);
 

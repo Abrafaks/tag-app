@@ -41,8 +41,8 @@ export default createStore({
   }),
   getTags: thunk(async (actions, _payload, helpers) => {
     const { page, pageSize, order, sort, search } = helpers.getState();
-    // const url = `asd/tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&inname=${search}&site=stackoverflow`;
-    const url = `/tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&inname=${search}&site=stackoverflow&key=${process.env.REACT_APP_API_KEY}`;
+    const lowercaseSearch = search.toLowerCase();
+    const url = `/tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&inname=${lowercaseSearch}&site=stackoverflow&key=${process.env.REACT_APP_API_KEY}`;
     try {
       actions.setIsError(false);
       actions.setIsLoading(true);

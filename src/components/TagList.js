@@ -15,7 +15,7 @@ const TagList = ({ isLoading, isError, tags }) => {
       )}
 
       {isError && (
-        <Typography variant="body1" gutterBottom>
+        <Typography variant="body1" gutterBottom mt={5}>
           Error occurred
         </Typography>
       )}

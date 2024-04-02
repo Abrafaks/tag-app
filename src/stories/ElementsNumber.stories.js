@@ -10,7 +10,7 @@ export default {
   },
   args: {
     handleElementChange: fn(),
-    pageSize: '30',
+    pageSize: 30,
     tags: [1, 2],
     isLoading: false
   }

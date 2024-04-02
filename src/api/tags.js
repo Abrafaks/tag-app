@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'https://api.stackexchange.com/2.3'
+  baseURL: process.env.REACT_APP_API_BASE_URL
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@mui/material/Unstable_Grid2';
-import { Paper, Typography } from '@mui/material';
+import { Link, Paper, Typography } from '@mui/material';
 import TagIcon from '@mui/icons-material/Tag';
 import { v4 } from 'uuid';
 
@@ -22,7 +22,15 @@ const TagItem = ({ name, count }) => {
       >
         <TagIcon color="primary" />
         <Typography variant="body1" style={{ marginLeft: 8 }}>
-          {name} - {count} questions
+          <Link
+            href={`https://stackoverflow.com/questions/tagged/${name}`}
+            underline="hover"
+            target="_blank"
+            rel="noreferrer"
+            color="inherit"
+          >
+            {name} - {count} questions
+          </Link>
         </Typography>
       </Paper>
     </Grid>

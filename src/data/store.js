@@ -9,7 +9,6 @@ export default createStore({
   }),
   search: '',
   setSearch: action((state, payload) => {
-    console.log(payload);
     state.search = payload;
   }),
   page: 1,

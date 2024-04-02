@@ -51,7 +51,6 @@ function App() {
 
   const debouncedGetTags = useRef(
     debounce(value => {
-      console.log('getting results');
       getTags(value);
     }, 750)
   ).current;

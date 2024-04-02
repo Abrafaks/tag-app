@@ -37,7 +37,7 @@ export default createStore({
   }),
   isError: false,
   setIsError: action((state, payload) => {
-    state.error = payload;
+    state.isError = payload;
   }),
   getTags: thunk(async (actions, _payload, helpers) => {
     const { page, pageSize, order, sort, search } = helpers.getState();
@@ -47,6 +47,7 @@ export default createStore({
       actions.setIsError(false);
       actions.setIsLoading(true);
       const response = await api.get(url);
+      console.log(JSON.stringify(response));
       const totalResponse = await api.get(url + '&filter=total');
       actions.setIsLoading(false);
 
